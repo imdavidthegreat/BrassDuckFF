@@ -48,3 +48,6 @@ Place the Players onto the appropriate Teams
 
 ## Implementation
 
+### Requirements Traceability Matrix
+
+![alt text]( "Class Model")
