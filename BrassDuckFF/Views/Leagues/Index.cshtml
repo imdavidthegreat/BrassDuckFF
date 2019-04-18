@@ -1,0 +1,147 @@
+﻿@model IEnumerable<BrassDuckFF.Models.League>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.leaguename)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.commissID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.passyrdsval)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.passtdsval)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.passintsval)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.rushyrdsval)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.rushtdsval)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.recrecval)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.recyrdsval)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.rectdsval)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.defsackval)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.defintsval)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.deftds)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.deffumrecval)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.kfgmadeval)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.kfgattemptval)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.kexpmadeval)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.kexpattemptval)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Member.username)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Team.teamname)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.leaguename)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.commissID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.passyrdsval)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.passtdsval)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.passintsval)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.rushyrdsval)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.rushtdsval)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.recrecval)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.recyrdsval)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.rectdsval)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.defsackval)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.defintsval)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.deftds)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.deffumrecval)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.kfgmadeval)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.kfgattemptval)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.kexpmadeval)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.kexpattemptval)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Member.username)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Team.teamname)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.leagueID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.leagueID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.leagueID })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,151 @@
+﻿@model IEnumerable<BrassDuckFF.Models.DB.Player>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Players</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.playername)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.team)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.position)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.weeknum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.opponent)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.passyrds)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.passtds)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.passints)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.rushyrds)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.rushtds)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.recrec)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.recyrds)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.rectds)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.defsack)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.defints)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.deftds)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.deffumrec)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.kfgmade)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.kfgattempt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.kexpmade)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.kexpattempt)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.playername)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.team)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.position)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.weeknum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.opponent)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.passyrds)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.passtds)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.passints)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.rushyrds)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.rushtds)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.recrec)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.recyrds)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.rectds)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.defsack)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.defints)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.deftds)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.deffumrec)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.kfgmade)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.kfgattempt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.kexpmade)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.kexpattempt)
+        </td>
+        <td>
+            
+            @Html.ActionLink("Details", "Details", new { id=item.playerID }) 
+            
+        </td>
+    </tr>
+}
+
+</table>

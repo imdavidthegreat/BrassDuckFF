@@ -1,0 +1,51 @@
+﻿@model IEnumerable<BrassDuckFF.Models.Member>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.username)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.passphrase)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.emailaddr)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.League.leaguename)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.username)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.passphrase)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.emailaddr)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.League.leaguename)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.memberID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.memberID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.memberID })
+        </td>
+    </tr>
+}
+
+</table>

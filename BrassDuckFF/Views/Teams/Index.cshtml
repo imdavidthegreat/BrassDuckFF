@@ -1,0 +1,99 @@
+﻿@model IEnumerable<BrassDuckFF.Models.Team>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.leagueID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.teamname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.qbID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.rb1ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.rb2ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.wr1ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.wr2ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.teID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.kID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.defID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.League.leaguename)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Member.username)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.leagueID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.teamname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.qbID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.rb1ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.rb2ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.wr1ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.wr2ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.teID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.kID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.defID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.League.leaguename)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Member.username)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.teamID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.teamID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.teamID })
+        </td>
+    </tr>
+}
+
+</table>

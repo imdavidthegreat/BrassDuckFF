@@ -1,0 +1,186 @@
+﻿@model BrassDuckFF.Models.Player
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Player</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.playername)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.playername)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.team)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.team)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.position)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.position)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.weeknum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.weeknum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.opponent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.opponent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.passyrds)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.passyrds)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.passtds)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.passtds)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.passints)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.passints)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.rushyrds)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rushyrds)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.rushtds)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rushtds)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.recrec)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.recrec)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.recyrds)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.recyrds)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.rectds)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rectds)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.defsack)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.defsack)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.defints)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.defints)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.deftds)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.deftds)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.deffumrec)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.deffumrec)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.kfgmade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.kfgmade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.kfgattempt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.kfgattempt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.kexpmade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.kexpmade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.kexpattempt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.kexpattempt)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.playerID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

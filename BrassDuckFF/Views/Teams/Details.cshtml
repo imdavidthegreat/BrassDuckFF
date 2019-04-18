@@ -1,0 +1,114 @@
+﻿@model BrassDuckFF.Models.Team
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Team</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.leagueID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.leagueID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.teamname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.teamname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.qbID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.qbID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.rb1ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rb1ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.rb2ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rb2ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.wr1ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.wr1ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.wr2ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.wr2ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.teID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.teID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.kID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.kID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.defID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.defID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.League.leaguename)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.League.leaguename)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Member.username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Member.username)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.teamID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,178 @@
+﻿@model BrassDuckFF.Models.League
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>League</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.leaguename)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.leaguename)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.commissID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.commissID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.passyrdsval)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.passyrdsval)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.passtdsval)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.passtdsval)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.passintsval)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.passintsval)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.rushyrdsval)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rushyrdsval)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.rushtdsval)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rushtdsval)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.recrecval)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.recrecval)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.recyrdsval)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.recyrdsval)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.rectdsval)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rectdsval)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.defsackval)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.defsackval)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.defintsval)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.defintsval)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.deftds)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.deftds)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.deffumrecval)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.deffumrecval)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.kfgmadeval)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.kfgmadeval)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.kfgattemptval)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.kfgattemptval)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.kexpmadeval)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.kexpmadeval)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.kexpattemptval)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.kexpattemptval)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Member.username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Member.username)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Team.teamname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Team.teamname)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.leagueID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

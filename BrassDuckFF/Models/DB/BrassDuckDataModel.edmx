@@ -1,0 +1,510 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BrassDuckModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'BrassDuck.dbo.'fantasy-football-weekly-project$'' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="'fantasy-football-weekly-project$'">
+          <Property Name="PlayerID" Type="float" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="Team" Type="nvarchar" MaxLength="255" />
+          <Property Name="Position" Type="nvarchar" MaxLength="255" />
+          <Property Name="Week" Type="float" />
+          <Property Name="Opponent" Type="nvarchar" MaxLength="255" />
+          <Property Name="PassingYards" Type="float" />
+          <Property Name="PassingTouchdowns" Type="float" />
+          <Property Name="PassingInterceptions" Type="float" />
+          <Property Name="RushingYards" Type="float" />
+          <Property Name="RushingTouchdowns" Type="float" />
+          <Property Name="Receptions" Type="float" />
+          <Property Name="ReceivingYards" Type="float" />
+          <Property Name="ReceivingTouchdowns" Type="float" />
+          <Property Name="Sacks" Type="float" />
+          <Property Name="Interceptions" Type="float" />
+          <Property Name="DefTouchdowns" Type="float" />
+          <Property Name="FumblesRecovered" Type="float" />
+          <Property Name="KickerFieldGoalMade" Type="float" />
+          <Property Name="KickerFieldGoalAttempted" Type="float" />
+          <Property Name="KickerExtraPointMade" Type="float" />
+          <Property Name="KickerExtraPointAttempt" Type="float" />
+          <Property Name="(PlayerID,Name,Team,Position,Week,Opponent,PassingYards,PassingT" Type="nvarchar" MaxLength="255" />
+        </EntityType>-->
+        <EntityType Name="Leagues">
+          <Key>
+            <PropertyRef Name="leagueID" />
+          </Key>
+          <Property Name="leagueID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="leaguename" Type="nvarchar" MaxLength="30" />
+          <Property Name="commissID" Type="int" />
+          <Property Name="passyrdsval" Type="float" />
+          <Property Name="passtdsval" Type="float" />
+          <Property Name="passintsval" Type="float" />
+          <Property Name="rushyrdsval" Type="float" />
+          <Property Name="rushtdsval" Type="float" />
+          <Property Name="recrecval" Type="float" />
+          <Property Name="recyrdsval" Type="float" />
+          <Property Name="rectdsval" Type="float" />
+          <Property Name="defsackval" Type="float" />
+          <Property Name="defintsval" Type="float" />
+          <Property Name="deftds" Type="float" />
+          <Property Name="deffumrecval" Type="float" />
+          <Property Name="kfgmadeval" Type="float" />
+          <Property Name="kfgattemptval" Type="float" />
+          <Property Name="kexpmadeval" Type="float" />
+          <Property Name="kexpattemptval" Type="float" />
+        </EntityType>
+        <EntityType Name="Members">
+          <Key>
+            <PropertyRef Name="memberID" />
+          </Key>
+          <Property Name="memberID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="nvarchar" MaxLength="30" />
+          <Property Name="passphrase" Type="nvarchar" MaxLength="30" />
+          <Property Name="emailaddr" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Players">
+          <Key>
+            <PropertyRef Name="playerID" />
+          </Key>
+          <Property Name="playerID" Type="int" Nullable="false" />
+          <Property Name="playername" Type="nvarchar" MaxLength="255" />
+          <Property Name="team" Type="varchar" MaxLength="255" />
+          <Property Name="position" Type="nvarchar" MaxLength="255" />
+          <Property Name="weeknum" Type="float" />
+          <Property Name="opponent" Type="nvarchar" MaxLength="255" />
+          <Property Name="passyrds" Type="float" />
+          <Property Name="passtds" Type="float" />
+          <Property Name="passints" Type="float" />
+          <Property Name="rushyrds" Type="float" />
+          <Property Name="rushtds" Type="float" />
+          <Property Name="recrec" Type="float" />
+          <Property Name="recyrds" Type="float" />
+          <Property Name="rectds" Type="float" />
+          <Property Name="defsack" Type="float" />
+          <Property Name="defints" Type="float" />
+          <Property Name="deftds" Type="float" />
+          <Property Name="deffumrec" Type="float" />
+          <Property Name="kfgmade" Type="float" />
+          <Property Name="kfgattempt" Type="float" />
+          <Property Name="kexpmade" Type="float" />
+          <Property Name="kexpattempt" Type="float" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TeamPlayers">
+          <Key>
+            <PropertyRef Name="teamID" />
+            <PropertyRef Name="playerID" />
+          </Key>
+          <Property Name="teamID" Type="int" Nullable="false" />
+          <Property Name="playerID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Teams">
+          <Key>
+            <PropertyRef Name="teamID" />
+          </Key>
+          <Property Name="teamID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="memberID" Type="int" />
+          <Property Name="leagueID" Type="int" />
+          <Property Name="teamname" Type="nvarchar" MaxLength="30" />
+          <Property Name="qbID" Type="int" />
+          <Property Name="rb1ID" Type="int" />
+          <Property Name="rb2ID" Type="int" />
+          <Property Name="wr1ID" Type="int" />
+          <Property Name="wr2ID" Type="int" />
+          <Property Name="teID" Type="int" />
+          <Property Name="kID" Type="int" />
+          <Property Name="defID" Type="int" />
+        </EntityType>
+        <Association Name="FK_Leagues_Members">
+          <End Role="Members" Type="Self.Members" Multiplicity="1" />
+          <End Role="Leagues" Type="Self.Leagues" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Members">
+              <PropertyRef Name="memberID" />
+            </Principal>
+            <Dependent Role="Leagues">
+              <PropertyRef Name="leagueID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TeamPlayers_Players">
+          <End Role="Players" Type="Self.Players" Multiplicity="1" />
+          <End Role="TeamPlayers" Type="Self.TeamPlayers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Players">
+              <PropertyRef Name="playerID" />
+            </Principal>
+            <Dependent Role="TeamPlayers">
+              <PropertyRef Name="playerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TeamPlayers_Teams">
+          <End Role="Teams" Type="Self.Teams" Multiplicity="1" />
+          <End Role="TeamPlayers" Type="Self.TeamPlayers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teams">
+              <PropertyRef Name="teamID" />
+            </Principal>
+            <Dependent Role="TeamPlayers">
+              <PropertyRef Name="teamID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Teams_Leagues">
+          <End Role="Leagues" Type="Self.Leagues" Multiplicity="1" />
+          <End Role="Teams" Type="Self.Teams" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Leagues">
+              <PropertyRef Name="leagueID" />
+            </Principal>
+            <Dependent Role="Teams">
+              <PropertyRef Name="teamID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Teams_Members">
+          <End Role="Members" Type="Self.Members" Multiplicity="0..1" />
+          <End Role="Teams" Type="Self.Teams" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Members">
+              <PropertyRef Name="memberID" />
+            </Principal>
+            <Dependent Role="Teams">
+              <PropertyRef Name="memberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BrassDuckModelStoreContainer">
+          <EntitySet Name="Leagues" EntityType="Self.Leagues" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Members" EntityType="Self.Members" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Players" EntityType="Self.Players" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TeamPlayers" EntityType="Self.TeamPlayers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Teams" EntityType="Self.Teams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Leagues_Members" Association="Self.FK_Leagues_Members">
+            <End Role="Members" EntitySet="Members" />
+            <End Role="Leagues" EntitySet="Leagues" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TeamPlayers_Players" Association="Self.FK_TeamPlayers_Players">
+            <End Role="Players" EntitySet="Players" />
+            <End Role="TeamPlayers" EntitySet="TeamPlayers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TeamPlayers_Teams" Association="Self.FK_TeamPlayers_Teams">
+            <End Role="Teams" EntitySet="Teams" />
+            <End Role="TeamPlayers" EntitySet="TeamPlayers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Teams_Leagues" Association="Self.FK_Teams_Leagues">
+            <End Role="Leagues" EntitySet="Leagues" />
+            <End Role="Teams" EntitySet="Teams" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Teams_Members" Association="Self.FK_Teams_Members">
+            <End Role="Members" EntitySet="Members" />
+            <End Role="Teams" EntitySet="Teams" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BrassDuckModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="League">
+          <Key>
+            <PropertyRef Name="leagueID" />
+          </Key>
+          <Property Name="leagueID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="leaguename" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="commissID" Type="Int32" />
+          <Property Name="passyrdsval" Type="Double" />
+          <Property Name="passtdsval" Type="Double" />
+          <Property Name="passintsval" Type="Double" />
+          <Property Name="rushyrdsval" Type="Double" />
+          <Property Name="rushtdsval" Type="Double" />
+          <Property Name="recrecval" Type="Double" />
+          <Property Name="recyrdsval" Type="Double" />
+          <Property Name="rectdsval" Type="Double" />
+          <Property Name="defsackval" Type="Double" />
+          <Property Name="defintsval" Type="Double" />
+          <Property Name="deftds" Type="Double" />
+          <Property Name="deffumrecval" Type="Double" />
+          <Property Name="kfgmadeval" Type="Double" />
+          <Property Name="kfgattemptval" Type="Double" />
+          <Property Name="kexpmadeval" Type="Double" />
+          <Property Name="kexpattemptval" Type="Double" />
+          <NavigationProperty Name="Member" Relationship="Self.FK_Leagues_Members" FromRole="Leagues" ToRole="Members" />
+          <NavigationProperty Name="Team" Relationship="Self.FK_Teams_Leagues" FromRole="Leagues" ToRole="Teams" />
+        </EntityType>
+        <EntityType Name="Member">
+          <Key>
+            <PropertyRef Name="memberID" />
+          </Key>
+          <Property Name="memberID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="passphrase" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="emailaddr" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="League" Relationship="Self.FK_Leagues_Members" FromRole="Members" ToRole="Leagues" />
+          <NavigationProperty Name="Teams" Relationship="Self.FK_Teams_Members" FromRole="Members" ToRole="Teams" />
+        </EntityType>
+        <EntityType Name="Player">
+          <Key>
+            <PropertyRef Name="playerID" />
+          </Key>
+          <Property Name="playerID" Type="Int32" Nullable="false" />
+          <Property Name="playername" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="team" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="position" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="weeknum" Type="Double" />
+          <Property Name="opponent" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="passyrds" Type="Double" />
+          <Property Name="passtds" Type="Double" />
+          <Property Name="passints" Type="Double" />
+          <Property Name="rushyrds" Type="Double" />
+          <Property Name="rushtds" Type="Double" />
+          <Property Name="recrec" Type="Double" />
+          <Property Name="recyrds" Type="Double" />
+          <Property Name="rectds" Type="Double" />
+          <Property Name="defsack" Type="Double" />
+          <Property Name="defints" Type="Double" />
+          <Property Name="deftds" Type="Double" />
+          <Property Name="deffumrec" Type="Double" />
+          <Property Name="kfgmade" Type="Double" />
+          <Property Name="kfgattempt" Type="Double" />
+          <Property Name="kexpmade" Type="Double" />
+          <Property Name="kexpattempt" Type="Double" />
+          <NavigationProperty Name="Teams" Relationship="Self.TeamPlayers" FromRole="Players" ToRole="Teams" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Team">
+          <Key>
+            <PropertyRef Name="teamID" />
+          </Key>
+          <Property Name="teamID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="memberID" Type="Int32" />
+          <Property Name="leagueID" Type="Int32" />
+          <Property Name="teamname" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="qbID" Type="Int32" />
+          <Property Name="rb1ID" Type="Int32" />
+          <Property Name="rb2ID" Type="Int32" />
+          <Property Name="wr1ID" Type="Int32" />
+          <Property Name="wr2ID" Type="Int32" />
+          <Property Name="teID" Type="Int32" />
+          <Property Name="kID" Type="Int32" />
+          <Property Name="defID" Type="Int32" />
+          <NavigationProperty Name="League" Relationship="Self.FK_Teams_Leagues" FromRole="Teams" ToRole="Leagues" />
+          <NavigationProperty Name="Member" Relationship="Self.FK_Teams_Members" FromRole="Teams" ToRole="Members" />
+          <NavigationProperty Name="Players" Relationship="Self.TeamPlayers" FromRole="Teams" ToRole="Players" />
+        </EntityType>
+        <Association Name="FK_Leagues_Members">
+          <End Role="Members" Type="Self.Member" Multiplicity="1" />
+          <End Role="Leagues" Type="Self.League" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Members">
+              <PropertyRef Name="memberID" />
+            </Principal>
+            <Dependent Role="Leagues">
+              <PropertyRef Name="leagueID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Teams_Leagues">
+          <End Role="Leagues" Type="Self.League" Multiplicity="1" />
+          <End Role="Teams" Type="Self.Team" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Leagues">
+              <PropertyRef Name="leagueID" />
+            </Principal>
+            <Dependent Role="Teams">
+              <PropertyRef Name="teamID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Teams_Members">
+          <End Role="Members" Type="Self.Member" Multiplicity="0..1" />
+          <End Role="Teams" Type="Self.Team" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Members">
+              <PropertyRef Name="memberID" />
+            </Principal>
+            <Dependent Role="Teams">
+              <PropertyRef Name="memberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TeamPlayers">
+          <End Role="Players" Type="Self.Player" Multiplicity="*" />
+          <End Role="Teams" Type="Self.Team" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="BrassDuckEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Leagues" EntityType="Self.League" />
+          <EntitySet Name="Members" EntityType="Self.Member" />
+          <EntitySet Name="Players" EntityType="Self.Player" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="Teams" EntityType="Self.Team" />
+          <AssociationSet Name="FK_Leagues_Members" Association="Self.FK_Leagues_Members">
+            <End Role="Members" EntitySet="Members" />
+            <End Role="Leagues" EntitySet="Leagues" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Teams_Leagues" Association="Self.FK_Teams_Leagues">
+            <End Role="Leagues" EntitySet="Leagues" />
+            <End Role="Teams" EntitySet="Teams" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Teams_Members" Association="Self.FK_Teams_Members">
+            <End Role="Members" EntitySet="Members" />
+            <End Role="Teams" EntitySet="Teams" />
+          </AssociationSet>
+          <AssociationSet Name="TeamPlayers" Association="Self.TeamPlayers">
+            <End Role="Players" EntitySet="Players" />
+            <End Role="Teams" EntitySet="Teams" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BrassDuckModelStoreContainer" CdmEntityContainer="BrassDuckEntities">
+          <EntitySetMapping Name="Leagues">
+            <EntityTypeMapping TypeName="BrassDuckModel.League">
+              <MappingFragment StoreEntitySet="Leagues">
+                <ScalarProperty Name="leagueID" ColumnName="leagueID" />
+                <ScalarProperty Name="leaguename" ColumnName="leaguename" />
+                <ScalarProperty Name="commissID" ColumnName="commissID" />
+                <ScalarProperty Name="passyrdsval" ColumnName="passyrdsval" />
+                <ScalarProperty Name="passtdsval" ColumnName="passtdsval" />
+                <ScalarProperty Name="passintsval" ColumnName="passintsval" />
+                <ScalarProperty Name="rushyrdsval" ColumnName="rushyrdsval" />
+                <ScalarProperty Name="rushtdsval" ColumnName="rushtdsval" />
+                <ScalarProperty Name="recrecval" ColumnName="recrecval" />
+                <ScalarProperty Name="recyrdsval" ColumnName="recyrdsval" />
+                <ScalarProperty Name="rectdsval" ColumnName="rectdsval" />
+                <ScalarProperty Name="defsackval" ColumnName="defsackval" />
+                <ScalarProperty Name="defintsval" ColumnName="defintsval" />
+                <ScalarProperty Name="deftds" ColumnName="deftds" />
+                <ScalarProperty Name="deffumrecval" ColumnName="deffumrecval" />
+                <ScalarProperty Name="kfgmadeval" ColumnName="kfgmadeval" />
+                <ScalarProperty Name="kfgattemptval" ColumnName="kfgattemptval" />
+                <ScalarProperty Name="kexpmadeval" ColumnName="kexpmadeval" />
+                <ScalarProperty Name="kexpattemptval" ColumnName="kexpattemptval" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Members">
+            <EntityTypeMapping TypeName="BrassDuckModel.Member">
+              <MappingFragment StoreEntitySet="Members">
+                <ScalarProperty Name="memberID" ColumnName="memberID" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="passphrase" ColumnName="passphrase" />
+                <ScalarProperty Name="emailaddr" ColumnName="emailaddr" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Players">
+            <EntityTypeMapping TypeName="BrassDuckModel.Player">
+              <MappingFragment StoreEntitySet="Players">
+                <ScalarProperty Name="playerID" ColumnName="playerID" />
+                <ScalarProperty Name="playername" ColumnName="playername" />
+                <ScalarProperty Name="team" ColumnName="team" />
+                <ScalarProperty Name="position" ColumnName="position" />
+                <ScalarProperty Name="weeknum" ColumnName="weeknum" />
+                <ScalarProperty Name="opponent" ColumnName="opponent" />
+                <ScalarProperty Name="passyrds" ColumnName="passyrds" />
+                <ScalarProperty Name="passtds" ColumnName="passtds" />
+                <ScalarProperty Name="passints" ColumnName="passints" />
+                <ScalarProperty Name="rushyrds" ColumnName="rushyrds" />
+                <ScalarProperty Name="rushtds" ColumnName="rushtds" />
+                <ScalarProperty Name="recrec" ColumnName="recrec" />
+                <ScalarProperty Name="recyrds" ColumnName="recyrds" />
+                <ScalarProperty Name="rectds" ColumnName="rectds" />
+                <ScalarProperty Name="defsack" ColumnName="defsack" />
+                <ScalarProperty Name="defints" ColumnName="defints" />
+                <ScalarProperty Name="deftds" ColumnName="deftds" />
+                <ScalarProperty Name="deffumrec" ColumnName="deffumrec" />
+                <ScalarProperty Name="kfgmade" ColumnName="kfgmade" />
+                <ScalarProperty Name="kfgattempt" ColumnName="kfgattempt" />
+                <ScalarProperty Name="kexpmade" ColumnName="kexpmade" />
+                <ScalarProperty Name="kexpattempt" ColumnName="kexpattempt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="BrassDuckModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Teams">
+            <EntityTypeMapping TypeName="BrassDuckModel.Team">
+              <MappingFragment StoreEntitySet="Teams">
+                <ScalarProperty Name="teamID" ColumnName="teamID" />
+                <ScalarProperty Name="memberID" ColumnName="memberID" />
+                <ScalarProperty Name="leagueID" ColumnName="leagueID" />
+                <ScalarProperty Name="teamname" ColumnName="teamname" />
+                <ScalarProperty Name="qbID" ColumnName="qbID" />
+                <ScalarProperty Name="rb1ID" ColumnName="rb1ID" />
+                <ScalarProperty Name="rb2ID" ColumnName="rb2ID" />
+                <ScalarProperty Name="wr1ID" ColumnName="wr1ID" />
+                <ScalarProperty Name="wr2ID" ColumnName="wr2ID" />
+                <ScalarProperty Name="teID" ColumnName="teID" />
+                <ScalarProperty Name="kID" ColumnName="kID" />
+                <ScalarProperty Name="defID" ColumnName="defID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="TeamPlayers" TypeName="BrassDuckModel.TeamPlayers" StoreEntitySet="TeamPlayers">
+            <EndProperty Name="Players">
+              <ScalarProperty Name="playerID" ColumnName="playerID" />
+            </EndProperty>
+            <EndProperty Name="Teams">
+              <ScalarProperty Name="teamID" ColumnName="teamID" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
