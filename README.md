@@ -62,7 +62,9 @@ Place the Players onto the appropriate Teams
 3.4;
 3.3;
 2.2;
-4.3
+4.3;
+5.1;
+5.2
 
 ## Testing
 
