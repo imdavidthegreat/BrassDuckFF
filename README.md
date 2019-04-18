@@ -36,3 +36,12 @@ Create an account/Log in
 Create/Edit a League
 Place the Players onto the appropriate Teams
 
+## Design
+
+### Data Model / Class Diagram
+
+![alt text](DataModel-ClassDiagram.png "Data Model")
+
+### Class Model
+
+![alt text](ClassModel.png "Class Model")
