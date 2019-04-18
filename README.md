@@ -50,4 +50,4 @@ Place the Players onto the appropriate Teams
 
 ### Requirements Traceability Matrix
 
-![alt text](BrassDuckRequirementsTraceabilityMatrix.xlsx "Requirements Traceability Matrix")
+![alt text](BrassDuckRequirementsTraceabilityMatrix.pdf "Requirements Traceability Matrix")
