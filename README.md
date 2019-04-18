@@ -56,4 +56,5 @@ Place the Players onto the appropriate Teams
 
 ### Testing Plan
 
-![alt text](ClassModel.PNG "Class Model")
+![alt text](BrassDuckTestPlan1.PNG "Test Plan")
+![alt text](BrassDuckTestPlan2.PNG "Test Plan")
