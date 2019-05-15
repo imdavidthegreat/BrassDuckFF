@@ -72,3 +72,14 @@ Place the Players onto the appropriate Teams
 
 ![alt text](BrassDuckTestPlan1.PNG "Test Plan")
 ![alt text](BrassDuckTestPlan2.PNG "Test Plan")
+
+## Lessons Learned
+
+### Be less busy. 
+Too many things at once leads to the need to prioritize.
+Burn out is real. 
+### Be more independent
+Guides are good, but they'll never be exactly what you want them to be.
+Taking pieces of guidance from different sources makes it difficult to track the flow of the application.
+### Be diligent in updating design documents
+A better road map would've helped me focus and keep things in mind that I would need later.
