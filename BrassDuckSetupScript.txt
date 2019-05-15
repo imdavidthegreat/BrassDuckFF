@@ -1,0 +1,225 @@
+USE [BrassDuck]
+GO
+DROP TABLE IF EXISTS [dbo].[Leagues];
+DROP TABLE IF EXISTS [dbo].[Members];
+DROP TABLE IF EXISTS [dbo].[Players];
+DROP TABLE IF EXISTS [dbo].[TeamPlayers];
+DROP TABLE IF EXISTS [dbo].[Teams];
+/****** Object:  Table [dbo].[Members]    Script Date: 4/16/2019 10:39:30 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Members](
+	[memberID] [int] NOT NULL IDENTITY(1000,1),
+	[username] [nvarchar](30) NULL,
+	[passphrase] [nvarchar](30) NULL,
+	[emailaddr] [nvarchar](30) NULL,
+ CONSTRAINT [PKmemberID] PRIMARY KEY CLUSTERED 
+(
+	[memberID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+USE [BrassDuck]
+GO
+
+/****** Object:  Table [dbo].[Leagues]    Script Date: 4/16/2019 10:39:50 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Leagues](
+	[leagueID] [int] NOT NULL IDENTITY(1000,1),
+	[leaguename] [nvarchar](30) NULL,
+	[commissID] [int] NULL,
+	[passyrdsval] [float] NULL,
+	[passtdsval] [float] NULL,
+	[passintsval] [float] NULL,
+	[rushyrdsval] [float] NULL,
+	[rushtdsval] [float] NULL,
+	[recrecval] [float] NULL,
+	[recyrdsval] [float] NULL,
+	[rectdsval] [float] NULL,
+	[defsackval] [float] NULL,
+	[defintsval] [float] NULL,
+	[deftds] [float] NULL,
+	[deffumrecval] [float] NULL,
+	[kfgmadeval] [float] NULL,
+	[kfgattemptval] [float] NULL,
+	[kexpmadeval] [float] NULL,
+	[kexpattemptval] [float] NULL,
+ CONSTRAINT [PKleagueID] PRIMARY KEY CLUSTERED 
+(
+	[leagueID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[Leagues]  WITH CHECK ADD  CONSTRAINT [FK_Leagues_Members] FOREIGN KEY([leagueID])
+REFERENCES [dbo].[Members] ([memberID])
+GO
+
+ALTER TABLE [dbo].[Leagues] CHECK CONSTRAINT [FK_Leagues_Members]
+GO
+
+USE [BrassDuck]
+GO
+
+/****** Object:  Table [dbo].[Teams]    Script Date: 4/18/2019 12:33:49 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Teams](
+	[teamID] [int] IDENTITY(1000,1) NOT NULL,
+	[memberID] [int] NULL,
+	[leagueID] [int] NULL,
+	[teamname] [nvarchar](30) NULL,
+ CONSTRAINT [teamID] PRIMARY KEY CLUSTERED 
+(
+	[teamID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[Teams]  WITH CHECK ADD  CONSTRAINT [FK_Teams_Leagues] FOREIGN KEY([leagueID])
+REFERENCES [dbo].[Leagues] ([leagueID])
+GO
+
+ALTER TABLE [dbo].[Teams] CHECK CONSTRAINT [FK_Teams_Leagues]
+GO
+
+ALTER TABLE [dbo].[Teams]  WITH CHECK ADD  CONSTRAINT [FK_Teams_Members] FOREIGN KEY([memberID])
+REFERENCES [dbo].[Members] ([memberID])
+GO
+
+ALTER TABLE [dbo].[Teams] CHECK CONSTRAINT [FK_Teams_Members]
+GO
+
+
+
+USE [BrassDuck]
+GO
+
+/****** Object:  Table [dbo].[Players]    Script Date: 4/16/2019 10:39:12 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Players](
+	[playerID] [int] NOT NULL,
+	[playername] [nvarchar](255) NULL,
+	[team] [varchar](255) NULL,
+	[position] [nvarchar](255) NULL,
+	[weeknum] [float] NULL,
+	[opponent] [nvarchar](255) NULL,
+	[passyrds] [float] NULL,
+	[passtds] [float] NULL,
+	[passints] [float] NULL,
+	[rushyrds] [float] NULL,
+	[rushtds] [float] NULL,
+	[recrec] [float] NULL,
+	[recyrds] [float] NULL,
+	[rectds] [float] NULL,
+	[defsack] [float] NULL,
+	[defints] [float] NULL,
+	[deftds] [float] NULL,
+	[deffumrec] [float] NULL,
+	[kfgmade] [float] NULL,
+	[kfgattempt] [float] NULL,
+	[kexpmade] [float] NULL,
+	[kexpattempt] [float] NULL,
+ CONSTRAINT [PKplayerID] PRIMARY KEY CLUSTERED 
+(
+	[playerID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+USE [BrassDuck]
+GO
+
+/****** Object:  Table [dbo].[TeamPlayers]    Script Date: 4/16/2019 10:38:55 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[TeamPlayers](
+	[teamID] [int] NOT NULL,
+	[playerID] [int] NOT NULL,
+ CONSTRAINT [PK_TeamPlayers] PRIMARY KEY CLUSTERED 
+(
+	[teamID] ASC,
+	[playerID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY],
+ CONSTRAINT [IX_TeamPlayers_PlayerID] UNIQUE NONCLUSTERED 
+(
+	[playerID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY],
+ CONSTRAINT [IX_TeamPlayers_TeamID] UNIQUE NONCLUSTERED 
+(
+	[teamID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[TeamPlayers]  WITH CHECK ADD  CONSTRAINT [FK_TeamPlayers_Players] FOREIGN KEY([playerID])
+REFERENCES [dbo].[Players] ([playerID])
+GO
+
+ALTER TABLE [dbo].[TeamPlayers] CHECK CONSTRAINT [FK_TeamPlayers_Players]
+GO
+
+ALTER TABLE [dbo].[TeamPlayers]  WITH CHECK ADD  CONSTRAINT [FK_TeamPlayers_Teams] FOREIGN KEY([teamID])
+REFERENCES [dbo].[Teams] ([teamID])
+GO
+
+ALTER TABLE [dbo].[TeamPlayers] CHECK CONSTRAINT [FK_TeamPlayers_Teams]
+GO
+
+
+
+
+
+
+
+INSERT INTO [dbo].[Players] 
+SELECT
+	[PlayerID]
+	,[Name]
+	,[Team]
+	,[Position]
+	,[Week]
+	,[Opponent]
+	,[PassingYards]
+	,[PassingTouchdowns]
+	,[PassingInterceptions]
+	,[RushingYards]
+	,[RushingTouchdowns]
+	,[Receptions]
+	,[ReceivingYards]
+	,[ReceivingTouchdowns]
+	,[Sacks]
+	,[Interceptions]
+	,[DefTouchdowns]
+	,[FumblesRecovered]
+	,[KickerFieldGoalMade]
+	,[KickerFieldGoalAttempted]
+	,[KickerExtraPointMade]
+	,[KickerExtraPointAttempt]
+	
+	FROM [dbo].['fantasy-football-weekly-project$']
+
+
