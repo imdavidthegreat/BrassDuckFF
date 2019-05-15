@@ -1,3 +1,5 @@
+https://brassduck.azurewebsites.net/
+
 # Brass Duck
 
 This project is centered around hosting fantasy football leagues. As well as having a need for a custom application like this myself it is my central project for the Microsoft Software and Systems Academy Cloud Applications Developer Cohort. This project uses T-SQL and SQL Server Management Studio for database construction, C# and Visual Studio for the programming language and environment, and ASP.NET MVC Framework for the web application design format as well as several other associated technologies.
