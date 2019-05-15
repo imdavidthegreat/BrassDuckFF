@@ -118,14 +118,6 @@ warning 6013: The table/view 'BrassDuck.dbo.'fantasy-football-weekly-project$'' 
           <Property Name="memberID" Type="int" />
           <Property Name="leagueID" Type="int" />
           <Property Name="teamname" Type="nvarchar" MaxLength="30" />
-          <Property Name="qbID" Type="int" />
-          <Property Name="rb1ID" Type="int" />
-          <Property Name="rb2ID" Type="int" />
-          <Property Name="wr1ID" Type="int" />
-          <Property Name="wr2ID" Type="int" />
-          <Property Name="teID" Type="int" />
-          <Property Name="kID" Type="int" />
-          <Property Name="defID" Type="int" />
         </EntityType>
         <Association Name="FK_Leagues_Members">
           <End Role="Members" Type="Self.Members" Multiplicity="1" />
@@ -164,14 +156,14 @@ warning 6013: The table/view 'BrassDuck.dbo.'fantasy-football-weekly-project$'' 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Teams_Leagues">
-          <End Role="Leagues" Type="Self.Leagues" Multiplicity="1" />
-          <End Role="Teams" Type="Self.Teams" Multiplicity="0..1" />
+          <End Role="Leagues" Type="Self.Leagues" Multiplicity="0..1" />
+          <End Role="Teams" Type="Self.Teams" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Leagues">
               <PropertyRef Name="leagueID" />
             </Principal>
             <Dependent Role="Teams">
-              <PropertyRef Name="teamID" />
+              <PropertyRef Name="leagueID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -244,7 +236,7 @@ warning 6013: The table/view 'BrassDuck.dbo.'fantasy-football-weekly-project$'' 
           <Property Name="kexpmadeval" Type="Double" />
           <Property Name="kexpattemptval" Type="Double" />
           <NavigationProperty Name="Member" Relationship="Self.FK_Leagues_Members" FromRole="Leagues" ToRole="Members" />
-          <NavigationProperty Name="Team" Relationship="Self.FK_Teams_Leagues" FromRole="Leagues" ToRole="Teams" />
+          <NavigationProperty Name="Teams" Relationship="Self.FK_Teams_Leagues" FromRole="Leagues" ToRole="Teams" />
         </EntityType>
         <EntityType Name="Member">
           <Key>
@@ -303,14 +295,6 @@ warning 6013: The table/view 'BrassDuck.dbo.'fantasy-football-weekly-project$'' 
           <Property Name="memberID" Type="Int32" />
           <Property Name="leagueID" Type="Int32" />
           <Property Name="teamname" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="qbID" Type="Int32" />
-          <Property Name="rb1ID" Type="Int32" />
-          <Property Name="rb2ID" Type="Int32" />
-          <Property Name="wr1ID" Type="Int32" />
-          <Property Name="wr2ID" Type="Int32" />
-          <Property Name="teID" Type="Int32" />
-          <Property Name="kID" Type="Int32" />
-          <Property Name="defID" Type="Int32" />
           <NavigationProperty Name="League" Relationship="Self.FK_Teams_Leagues" FromRole="Teams" ToRole="Leagues" />
           <NavigationProperty Name="Member" Relationship="Self.FK_Teams_Members" FromRole="Teams" ToRole="Members" />
           <NavigationProperty Name="Players" Relationship="Self.TeamPlayers" FromRole="Teams" ToRole="Players" />
@@ -328,14 +312,14 @@ warning 6013: The table/view 'BrassDuck.dbo.'fantasy-football-weekly-project$'' 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Teams_Leagues">
-          <End Role="Leagues" Type="Self.League" Multiplicity="1" />
-          <End Role="Teams" Type="Self.Team" Multiplicity="0..1" />
+          <End Role="Leagues" Type="Self.League" Multiplicity="0..1" />
+          <End Role="Teams" Type="Self.Team" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Leagues">
               <PropertyRef Name="leagueID" />
             </Principal>
             <Dependent Role="Teams">
-              <PropertyRef Name="teamID" />
+              <PropertyRef Name="leagueID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -355,7 +339,7 @@ warning 6013: The table/view 'BrassDuck.dbo.'fantasy-football-weekly-project$'' 
           <End Role="Players" Type="Self.Player" Multiplicity="*" />
           <End Role="Teams" Type="Self.Team" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="BrassDuckEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="BrassDuckEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Leagues" EntityType="Self.League" />
           <EntitySet Name="Members" EntityType="Self.Member" />
           <EntitySet Name="Players" EntityType="Self.Player" />
@@ -383,7 +367,7 @@ warning 6013: The table/view 'BrassDuck.dbo.'fantasy-football-weekly-project$'' 
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="BrassDuckModelStoreContainer" CdmEntityContainer="BrassDuckEntities">
+        <EntityContainerMapping StorageEntityContainer="BrassDuckModelStoreContainer" CdmEntityContainer="BrassDuckEntities1">
           <EntitySetMapping Name="Leagues">
             <EntityTypeMapping TypeName="BrassDuckModel.League">
               <MappingFragment StoreEntitySet="Leagues">
@@ -465,14 +449,6 @@ warning 6013: The table/view 'BrassDuck.dbo.'fantasy-football-weekly-project$'' 
                 <ScalarProperty Name="memberID" ColumnName="memberID" />
                 <ScalarProperty Name="leagueID" ColumnName="leagueID" />
                 <ScalarProperty Name="teamname" ColumnName="teamname" />
-                <ScalarProperty Name="qbID" ColumnName="qbID" />
-                <ScalarProperty Name="rb1ID" ColumnName="rb1ID" />
-                <ScalarProperty Name="rb2ID" ColumnName="rb2ID" />
-                <ScalarProperty Name="wr1ID" ColumnName="wr1ID" />
-                <ScalarProperty Name="wr2ID" ColumnName="wr2ID" />
-                <ScalarProperty Name="teID" ColumnName="teID" />
-                <ScalarProperty Name="kID" ColumnName="kID" />
-                <ScalarProperty Name="defID" ColumnName="defID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

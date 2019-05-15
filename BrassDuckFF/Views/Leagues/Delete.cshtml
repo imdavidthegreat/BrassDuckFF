@@ -1,4 +1,4 @@
-﻿@model BrassDuckFF.Models.League
+﻿@model BrassDuckFF.Models.DB.League
 
 @{
     ViewBag.Title = "Delete";
@@ -161,14 +161,6 @@
 
         <dd>
             @Html.DisplayFor(model => model.Member.username)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Team.teamname)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Team.teamname)
         </dd>
 
     </dl>

@@ -6,13 +6,13 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using BrassDuckFF.Models;
+using BrassDuckFF.Models.DB;
 
 namespace BrassDuckFF.Controllers
 {
     public class MembersController : Controller
     {
-        private BrassDuckEntities db = new BrassDuckEntities();
+        private BrassDuckEntities1 db = new BrassDuckEntities1();
 
         // GET: Members
         public ActionResult Index()

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<BrassDuckFF.Models.League>
+﻿@model IEnumerable<BrassDuckFF.Models.DB.League>
 
 @{
     ViewBag.Title = "Index";
@@ -68,9 +68,6 @@
         <th>
             @Html.DisplayNameFor(model => model.Member.username)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Team.teamname)
-        </th>
         <th></th>
     </tr>
 
@@ -132,9 +129,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Member.username)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Team.teamname)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.leagueID }) |

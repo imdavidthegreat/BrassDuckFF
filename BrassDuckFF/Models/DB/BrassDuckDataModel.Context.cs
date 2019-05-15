@@ -13,10 +13,11 @@ namespace BrassDuckFF.Models.DB
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class BrassDuckEntities : DbContext
+    
+    public partial class BrassDuckEntities1 : DbContext
     {
-        public BrassDuckEntities()
-            : base("name=BrassDuckEntities")
+        public BrassDuckEntities1()
+            : base("name=BrassDuckEntities1")
         {
         }
     

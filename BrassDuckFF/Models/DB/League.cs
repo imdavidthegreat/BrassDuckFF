@@ -14,6 +14,12 @@ namespace BrassDuckFF.Models.DB
     
     public partial class League
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public League()
+        {
+            this.Teams = new HashSet<Team>();
+        }
+    
         public int leagueID { get; set; }
         public string leaguename { get; set; }
         public Nullable<int> commissID { get; set; }
@@ -35,6 +41,7 @@ namespace BrassDuckFF.Models.DB
         public Nullable<double> kexpattemptval { get; set; }
     
         public virtual Member Member { get; set; }
-        public virtual Team Team { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Team> Teams { get; set; }
     }
 }

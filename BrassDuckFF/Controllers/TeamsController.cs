@@ -6,13 +6,13 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using BrassDuckFF.Models;
+using BrassDuckFF.Models.DB;
 
 namespace BrassDuckFF.Controllers
 {
     public class TeamsController : Controller
     {
-        private BrassDuckEntities db = new BrassDuckEntities();
+        private BrassDuckEntities1 db = new BrassDuckEntities1();
 
         // GET: Teams
         public ActionResult Index()
@@ -39,7 +39,7 @@ namespace BrassDuckFF.Controllers
         // GET: Teams/Create
         public ActionResult Create()
         {
-            ViewBag.teamID = new SelectList(db.Leagues, "leagueID", "leaguename");
+            ViewBag.leagueID = new SelectList(db.Leagues, "leagueID", "leaguename");
             ViewBag.memberID = new SelectList(db.Members, "memberID", "username");
             return View();
         }
@@ -49,7 +49,7 @@ namespace BrassDuckFF.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "teamID,memberID,leagueID,teamname,qbID,rb1ID,rb2ID,wr1ID,wr2ID,teID,kID,defID")] Team team)
+        public ActionResult Create([Bind(Include = "teamID,memberID,leagueID,teamname")] Team team)
         {
             if (ModelState.IsValid)
             {
@@ -58,7 +58,7 @@ namespace BrassDuckFF.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.teamID = new SelectList(db.Leagues, "leagueID", "leaguename", team.teamID);
+            ViewBag.leagueID = new SelectList(db.Leagues, "leagueID", "leaguename", team.leagueID);
             ViewBag.memberID = new SelectList(db.Members, "memberID", "username", team.memberID);
             return View(team);
         }
@@ -75,7 +75,7 @@ namespace BrassDuckFF.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.teamID = new SelectList(db.Leagues, "leagueID", "leaguename", team.teamID);
+            ViewBag.leagueID = new SelectList(db.Leagues, "leagueID", "leaguename", team.leagueID);
             ViewBag.memberID = new SelectList(db.Members, "memberID", "username", team.memberID);
             return View(team);
         }
@@ -85,7 +85,7 @@ namespace BrassDuckFF.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "teamID,memberID,leagueID,teamname,qbID,rb1ID,rb2ID,wr1ID,wr2ID,teID,kID,defID")] Team team)
+        public ActionResult Edit([Bind(Include = "teamID,memberID,leagueID,teamname")] Team team)
         {
             if (ModelState.IsValid)
             {
@@ -93,7 +93,7 @@ namespace BrassDuckFF.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.teamID = new SelectList(db.Leagues, "leagueID", "leaguename", team.teamID);
+            ViewBag.leagueID = new SelectList(db.Leagues, "leagueID", "leaguename", team.leagueID);
             ViewBag.memberID = new SelectList(db.Members, "memberID", "username", team.memberID);
             return View(team);
         }

@@ -24,14 +24,6 @@ namespace BrassDuckFF.Models.DB
         public Nullable<int> memberID { get; set; }
         public Nullable<int> leagueID { get; set; }
         public string teamname { get; set; }
-        public Nullable<int> qbID { get; set; }
-        public Nullable<int> rb1ID { get; set; }
-        public Nullable<int> rb2ID { get; set; }
-        public Nullable<int> wr1ID { get; set; }
-        public Nullable<int> wr2ID { get; set; }
-        public Nullable<int> teID { get; set; }
-        public Nullable<int> kID { get; set; }
-        public Nullable<int> defID { get; set; }
     
         public virtual League League { get; set; }
         public virtual Member Member { get; set; }

@@ -6,18 +6,18 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using BrassDuckFF.Models;
+using BrassDuckFF.Models.DB;
 
 namespace BrassDuckFF.Controllers
 {
     public class LeaguesController : Controller
     {
-        private BrassDuckEntities db = new BrassDuckEntities();
+        private BrassDuckEntities1 db = new BrassDuckEntities1();
 
         // GET: Leagues
         public ActionResult Index()
         {
-            var leagues = db.Leagues.Include(l => l.Member).Include(l => l.Team);
+            var leagues = db.Leagues.Include(l => l.Member);
             return View(leagues.ToList());
         }
 
@@ -40,7 +40,6 @@ namespace BrassDuckFF.Controllers
         public ActionResult Create()
         {
             ViewBag.leagueID = new SelectList(db.Members, "memberID", "username");
-            ViewBag.leagueID = new SelectList(db.Teams, "teamID", "teamname");
             return View();
         }
 
@@ -59,7 +58,6 @@ namespace BrassDuckFF.Controllers
             }
 
             ViewBag.leagueID = new SelectList(db.Members, "memberID", "username", league.leagueID);
-            ViewBag.leagueID = new SelectList(db.Teams, "teamID", "teamname", league.leagueID);
             return View(league);
         }
 
@@ -76,7 +74,6 @@ namespace BrassDuckFF.Controllers
                 return HttpNotFound();
             }
             ViewBag.leagueID = new SelectList(db.Members, "memberID", "username", league.leagueID);
-            ViewBag.leagueID = new SelectList(db.Teams, "teamID", "teamname", league.leagueID);
             return View(league);
         }
 
@@ -94,7 +91,6 @@ namespace BrassDuckFF.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.leagueID = new SelectList(db.Members, "memberID", "username", league.leagueID);
-            ViewBag.leagueID = new SelectList(db.Teams, "teamID", "teamname", league.leagueID);
             return View(league);
         }
 
